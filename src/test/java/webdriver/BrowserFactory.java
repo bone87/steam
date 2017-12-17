@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static webdriver.Logger.getLoc;
 
@@ -46,6 +48,7 @@ final public class BrowserFactory {
     private static String androidBrowserName = System.getProperty("androidBrowserName", "android");
     private static final Logger logger = Logger.getInstance();
     private static final String CLS_NAME = BrowserFactory.class.getName();
+    private static final String FILE_NAME_SELENIUM_PROPS = "selenium.properties";
 
     private BrowserFactory() {
         // do not instantiate BrowserFactory class
@@ -159,6 +162,8 @@ final public class BrowserFactory {
         ChromeOptions options = null;
         if (Browser.getDetectJsErrors()) {
             options = new ChromeOptions();
+
+
             options.addExtensions(new File(ClassLoader.getSystemResource("Chrome_JSErrorCollector.crx").getPath()));
         }
         DesiredCapabilities cp1 = DesiredCapabilities.chrome();
@@ -175,6 +180,15 @@ final public class BrowserFactory {
         if (options != null) {
             cp1.setCapability(ChromeOptions.CAPABILITY, options);
         }
+
+        HashMap<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("download.default_directory", System.getProperty("user.dir") + new PropertiesResourceManager(FILE_NAME_SELENIUM_PROPS).getProperty("path_do_download"));
+        chromePrefs.put("safebrowsing.enabled", "true");
+        options = new ChromeOptions();
+        options.setExperimentalOption("prefs", chromePrefs);
+        cp1.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        cp1.setCapability(ChromeOptions.CAPABILITY, options);
+
         RemoteWebDriver driver = new ChromeDriver(cp1);
         driver.manage().window().maximize();
         return driver;
