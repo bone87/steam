@@ -32,7 +32,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
 import static webdriver.Logger.getLoc;
 
@@ -48,7 +47,7 @@ final public class BrowserFactory {
     private static String androidBrowserName = System.getProperty("androidBrowserName", "android");
     private static final Logger logger = Logger.getInstance();
     private static final String CLS_NAME = BrowserFactory.class.getName();
-    private static final String FILE_NAME_SELENIUM_PROPS = "selenium.properties";
+    public static final String FILE_NAME_SELENIUM_PROPS = "selenium.properties";
 
     private BrowserFactory() {
         // do not instantiate BrowserFactory class

@@ -5,8 +5,10 @@ import steam.test.tests.forms.ActionGamePage;
 import steam.test.tests.forms.MainPage;
 import steam.test.tests.forms.GameWithDiscountPage;
 import steam.test.tests.models.Game;
+import steam.test.tests.utils.FileUtils;
 import steam.test.tests.utils.Localler;
 import webdriver.BaseTest;
+import webdriver.BrowserFactory;
 import webdriver.PropertiesResourceManager;
 
 import java.util.concurrent.TimeUnit;
@@ -32,9 +34,12 @@ public class SteamTest extends BaseTest {
         actionGamePage.getBrowser().navigate(gameWithMaxDiscount.getUrl());
         GameWithDiscountPage gameWithDiscountPage = new GameWithDiscountPage();
         Game gameWithDiscount = gameWithDiscountPage.getGameWithDiscount();
-        gameWithDiscountPage.header.getButton(locale_props.getProperty(PROPS.getProperty("button_name"))).clickAndWait();
+        gameWithDiscountPage.header.getButton(locale_props.getProperty(PROPS.getProperty("btn_install_steam_header"))).clickAndWait();
+
+        FileUtils.veriryFolder(System.getProperty("user.dir") + new PropertiesResourceManager(BrowserFactory.FILE_NAME_SELENIUM_PROPS).getProperty("path_do_download"));
+
         AboutPage aboutPage = new AboutPage();
-        aboutPage.selectElement(PROPS.getProperty("button_name"));
-        TimeUnit.SECONDS.sleep(3);
+        aboutPage.selectElement(locale_props.getProperty(PROPS.getProperty("btn_install_steam_about")));
+//        TimeUnit.SECONDS.sleep(3);
     }
 }

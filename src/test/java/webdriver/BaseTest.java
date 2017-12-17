@@ -12,7 +12,7 @@ public abstract class BaseTest extends BaseEntity {
     /**
      * To override.
      */
-    public abstract void runTest();
+    public abstract void runTest() throws InterruptedException;
 
     /**
      * Test

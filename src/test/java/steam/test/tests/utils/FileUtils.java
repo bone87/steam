@@ -3,33 +3,35 @@ package steam.test.tests.utils;
 import java.io.File;
 
 public class FileUtils {
-    private static File folder;
 
-    public static void veriryFolder(String path_to_folder) {
-        folder  = new File(path_to_folder);
+    public static File veriryFolder(String path_to_folder) {
+        File folder  = new File(path_to_folder);
         if (folder.exists()) {
             if (!isEmpty(folder)) {
+                System.out.println("DELETE");
                 delete(folder);
+                System.out.println("CREATED");
                 folder.mkdir();
             }
         } else {
+            System.out.println("CREATED");
             folder.mkdir();
         }
+        return folder;
     }
 
     private static void delete(File file)
     {
-        if(!file.exists())
-            return;
-        if(file.isDirectory())
-        {
-            for(File f : file.listFiles())
-                delete(f);
-            file.delete();
-        }
-        else
-        {
-            file.delete();
+        if (file != null) {
+            if (!file.exists())
+                return;
+            if (file.isDirectory()) {
+                for (File f : file.listFiles())
+                    delete(f);
+                file.delete();
+            } else {
+                file.delete();
+            }
         }
     }
 
@@ -47,10 +49,8 @@ public class FileUtils {
         }
         return length;
     }
-    public static boolean isFolderSizeNotZero() {
+    public static boolean isFolderSizeNotZero(File folder) {
         long folderSize = folderSize(folder);
-        if (folderSize>0) {
-            return true;
-        } else return false;
+        return folderSize > 0;
     }
 }
