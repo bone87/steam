@@ -1,6 +1,13 @@
 package steam.test.tests.utils;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import webdriver.Browser;
+
 import java.io.File;
+import java.util.Collection;
+import java.util.Collections;
 
 public class FileUtils {
 
@@ -53,4 +60,15 @@ public class FileUtils {
         long folderSize = folderSize(folder);
         return folderSize > 0;
     }
+
+
+    public static void waitForFileDownload(String pathToFile, String fileName, int waitForDownload) {
+        new WebDriverWait(Browser.getDriver(), waitForDownload).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d) {
+                File file = new File(String.format("%s%s", pathToFile, fileName));
+                return (file.exists() && file.length()>0);
+            }
+        });
+    }
+
 }
