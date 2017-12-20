@@ -8,8 +8,6 @@ import webdriver.BaseTest;
 import webdriver.BrowserFactory;
 import webdriver.PropertiesResourceManager;
 
-import java.util.concurrent.TimeUnit;
-
 public class SteamTest extends BaseTest {
     private final String STEAM_PROPERTIES_FILE = "steam_project.properties";
     private final PropertiesResourceManager PROPS = new PropertiesResourceManager(STEAM_PROPERTIES_FILE);
@@ -33,8 +31,8 @@ public class SteamTest extends BaseTest {
         Game gameWithMaxDiscount = actionGamePage.storeTabBar.topSellersTab.tabRows.getGameWithMaxDiscount();
 
         logger.step(5);
-//        actionGamePage.getBrowser().navigate(gameWithMaxDiscount.getUrl());
-        actionGamePage.getBrowser().navigate("http://store.steampowered.com/agecheck/app/271590/");
+        actionGamePage.getBrowser().navigate(gameWithMaxDiscount.getUrl());
+//        actionGamePage.getBrowser().navigate("http://store.steampowered.com/agecheck/app/271590/");
 
         AgeRequestPage ageRequestPage = new AgeRequestPage();
         System.out.println(ageRequestPage.boxTextGate.isPresent());
