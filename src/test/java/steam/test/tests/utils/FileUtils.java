@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import webdriver.Browser;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.Collections;
 
 public class FileUtils {
 
