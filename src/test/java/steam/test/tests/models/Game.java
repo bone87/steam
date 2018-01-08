@@ -19,18 +19,6 @@ public class Game implements Comparable<Game>{
         return url;
     }
 
-    public float getDiscount_pct() {
-        return discount_pct;
-    }
-
-    public float getDiscount_original_price() {
-        return discount_original_price;
-    }
-
-    public float getDiscount_final_price() {
-        return discount_final_price;
-    }
-
     @Override
     public int compareTo(@NotNull Game o) {
         return (int) (this.discount_pct-o.discount_pct);

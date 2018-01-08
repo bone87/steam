@@ -9,62 +9,37 @@ import java.io.File;
 
 public class FileUtils {
 
-    public static File veriryFolder(String path_to_folder) {
-        File folder  = new File(path_to_folder);
+    public static void veriryFolder(String path_to_folder) {
+        File folder = new File(path_to_folder);
         if (folder.exists()) {
-            if (!isEmpty(folder)) {
-                System.out.println("DELETE");
-                delete(folder);
-                System.out.println("CREATED");
-                folder.mkdir();
+            if (!isFolderEmpty(folder)) {
+                deleteFolder(folder);
             }
-        } else {
-            System.out.println("CREATED");
-            folder.mkdir();
         }
-        return folder;
+        if (!folder.mkdir()) throw new Error("Folder not created");
     }
 
-    private static void delete(File file)
-    {
+    private static void deleteFolder(File file) {
         if (file != null) {
             if (!file.exists())
                 return;
             if (file.isDirectory()) {
                 for (File f : file.listFiles())
-                    delete(f);
-                file.delete();
-            } else {
-                file.delete();
+                    deleteFolder(f);
+            }
+            file.delete();
             }
         }
-    }
 
-    private static Boolean isEmpty(final File file) {
+    private static Boolean isFolderEmpty(final File file) {
         return (file.isDirectory() && (file.list().length == 0));
     }
-
-    public static long folderSize(File directory) {
-        long length = 0;
-        for (File file : directory.listFiles()) {
-            if (file.isFile())
-                length += file.length();
-            else
-                length += folderSize(file);
-        }
-        return length;
-    }
-    public static boolean isFolderSizeNotZero(File folder) {
-        long folderSize = folderSize(folder);
-        return folderSize > 0;
-    }
-
 
     public static void waitForFileDownload(String pathToFile, String fileName, int waitForDownload) {
         new WebDriverWait(Browser.getDriver(), waitForDownload).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 File file = new File(String.format("%s%s", pathToFile, fileName));
-                return (file.exists() && file.length()>0);
+                return (file.exists() && file.length() > 0);
             }
         });
     }

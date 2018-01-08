@@ -8,7 +8,7 @@ public abstract class BasePage extends BaseForm {
 
     public Header header = new Header();
 
-    public BasePage(By locator, String formTitle) {
+    BasePage(By locator, String formTitle) {
         super(locator, formTitle);
     }
 

@@ -9,6 +9,7 @@ public class AboutPage extends BasePage {
     public AboutPage() {
         super(By.xpath("//div[@id='about_header_ctn']"), "about page");
     }
+
     public void selectElement(String elementName){
         new Button(By.xpath(String.format(btnElementStringLocator, elementName)), String.format("element: %s", elementName)).clickAndWait();
     }

@@ -5,9 +5,8 @@ import webdriver.elements.Button;
 
 public class PopupNavMenu {
 
-    private final String btnElementStringLocator = "//div[@id='store_nav_area']//a[@class='popup_menu_item' and contains(text(),'%s')]";
-
     public void selectElement(String elementName){
+        String btnElementStringLocator = "//div[@id='store_nav_area']//a[@class='popup_menu_item' and contains(text(),'%s')]";
         new Button(By.xpath(String.format(btnElementStringLocator, elementName)), String.format("element: %s", elementName)).clickAndWait();
     }
 

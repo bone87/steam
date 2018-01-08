@@ -7,17 +7,17 @@ import webdriver.elements.Button;
 
 public abstract class BaseTab extends BaseForm {
 
+    private final static String BTN_ELEMENT_STRING_LOCATOR = "//div[@id='%s']";
     private final String TAB_ID;
-    private final String btnElementStringLocator = "//div[@id='%s']";
     public TabRows tabRows;
 
     public BaseTab(String tabId) {
-        super(By.xpath(String.format("//div[@id='%s']", tabId)), String.format("tab with id=%s",tabId));
+        super(By.xpath(String.format(String.format(BTN_ELEMENT_STRING_LOCATOR, tabId))), String.format("tab with id=%s",tabId));
         TAB_ID = tabId;
     }
 
     public void selectTab(){
-        new Button(By.xpath(String.format(btnElementStringLocator, TAB_ID)), String.format("tab with id=%s",TAB_ID)).clickAndWait();
+        new Button(By.xpath(String.format(BTN_ELEMENT_STRING_LOCATOR, TAB_ID)), String.format("tab with id=%s",TAB_ID)).clickAndWait();
         tabRows = new TabRows();
     }
 

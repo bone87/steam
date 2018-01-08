@@ -6,11 +6,12 @@ import webdriver.elements.DropBox;
 import webdriver.elements.TextBox;
 
 public class AgeRequestPage {
-    public TextBox boxTextGate = new TextBox(By.xpath("//div[@id='agegate_box']"), "age request");
+    private static final String DRB_AGE_STRING_LOCATOR = "//select[@name='%s']";
 
-    private DropBox drbAgeDay = new DropBox(By.xpath("//select[@name='ageDay']"), "ageDay");
-    private DropBox drbAgeMonth = new DropBox(By.xpath("//select[@name='ageMonth']"), "ageMonth");
-    private DropBox drbAgeYear = new DropBox(By.xpath("//select[@name='ageYear']"), "ageYear");
+    private TextBox txbAgeGate = new TextBox(By.xpath("//div[@id='agegate_box']"), "age request");
+    private DropBox drbAgeDay = new DropBox(By.xpath(String.format(DRB_AGE_STRING_LOCATOR, "ageDay")), "ageDay");
+    private DropBox drbAgeMonth = new DropBox(By.xpath(String.format(DRB_AGE_STRING_LOCATOR, "ageMonth")), "ageMonth");
+    private DropBox drbAgeYear = new DropBox(By.xpath(String.format(DRB_AGE_STRING_LOCATOR, "ageYear")), "ageYear");
     private String btnEnter = "//span[contains(text(),'%s')]";
 
     public void fillAgeAndConfirm(String dayValue, String monthValue, String yearValue, String btnName) {
@@ -18,6 +19,10 @@ public class AgeRequestPage {
         drbAgeMonth.select(monthValue);
         drbAgeYear.select(yearValue);
         new Button(By.xpath(String.format(btnEnter, btnName)), btnName).clickAndWait();
+    }
+
+    public boolean isAgeGateIsPresent() {
+        return txbAgeGate.isPresent();
     }
 
 }
