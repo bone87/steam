@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Demo Test Plan" verbose="1">
-	<test name="GoogleSearchTest">
+<suite name="Test Plan" verbose="1">
+	<test name="SteamTest">
 		<classes>
-			<class name="demo.test.tests.GoogleSearchTest" />
+			<class name="steam.test.tests.SteamTest" />
         </classes>
 	</test>
 </suite>
