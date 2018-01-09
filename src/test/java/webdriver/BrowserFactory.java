@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import steam.test.tests.utils.ConfigReader;
 import webdriver.Browser.Browsers;
 
 import javax.naming.NamingException;
@@ -136,6 +137,7 @@ final public class BrowserFactory {
         FirefoxProfile ffProfile = new FirefoxProfile();
         ffProfile.setPreference("plugin.state.flash", (Browser.isWithoutFlash()) ? 1 : 0);
         ffProfile.setPreference("browser.download.folderList", 2);
+        ffProfile.setPreference("browser.download.dir", ConfigReader.PATH_DO_DOWNLOAD);
         ffProfile.setPreference("browser.download.manager.showWhenStarting", false);
         ffProfile.setPreference("browser.helperApps.alwaysAsk.force", false);
         ffProfile.setPreference("browser.download.manager.alertOnEXEOpen", false);
