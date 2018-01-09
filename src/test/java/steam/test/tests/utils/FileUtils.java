@@ -16,7 +16,7 @@ public class FileUtils {
                 deleteFolder(folder);
             }
         }
-        if (!folder.mkdir()) throw new Error("Folder not created");
+        folder.mkdir();
     }
 
     private static void deleteFolder(File file) {

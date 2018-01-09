@@ -137,7 +137,7 @@ final public class BrowserFactory {
         FirefoxProfile ffProfile = new FirefoxProfile();
         ffProfile.setPreference("plugin.state.flash", (Browser.isWithoutFlash()) ? 1 : 0);
         ffProfile.setPreference("browser.download.folderList", 2);
-        ffProfile.setPreference("browser.download.dir", ConfigReader.PATH_DO_DOWNLOAD);
+        ffProfile.setPreference("browser.download.dir", System.getProperty("user.dir") + new PropertiesResourceManager(FILE_NAME_SELENIUM_PROPS).getProperty("path_do_download"));
         ffProfile.setPreference("browser.download.manager.showWhenStarting", false);
         ffProfile.setPreference("browser.helperApps.alwaysAsk.force", false);
         ffProfile.setPreference("browser.download.manager.alertOnEXEOpen", false);
