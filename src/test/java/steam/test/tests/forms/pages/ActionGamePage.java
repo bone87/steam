@@ -1,6 +1,7 @@
-package steam.test.tests.forms;
+package steam.test.tests.forms.pages;
 
 import org.openqa.selenium.By;
+import steam.test.tests.forms.StoreTabBar;
 
 public class ActionGamePage extends BasePageWithNav {
 

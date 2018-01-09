@@ -1,6 +1,6 @@
 package steam.test.tests;
 
-import steam.test.tests.forms.*;
+import steam.test.tests.forms.pages.*;
 import steam.test.tests.models.Game;
 import steam.test.tests.utils.ConfigReader;
 import steam.test.tests.utils.FileUtils;
@@ -9,7 +9,7 @@ import webdriver.BaseTest;
 public class SteamTest extends BaseTest {
 
     @Override
-    public void runTest() throws InterruptedException {
+    public void runTest() {
 
         logger.step(2);
         MainPage mainPage = new MainPage();
@@ -34,7 +34,7 @@ public class SteamTest extends BaseTest {
         }
         GameWithDiscountPage gameWithDiscountPage = new GameWithDiscountPage();
         Game gameWithDiscount = gameWithDiscountPage.getGameWithDiscount();
-        assertEquals("Games isn't equal", gameWithMaxDiscount, gameWithDiscount);
+        assertEquals("Games aren't equal", gameWithMaxDiscount, gameWithDiscount);
 
         logger.step(6);
         gameWithDiscountPage.header.clickButton(ConfigReader.BTN_INSTALL_STEAM_HEADER);

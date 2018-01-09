@@ -15,11 +15,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class TabRows {
+    private final static String DISCOUNT_STRING_LOCATOR = "//div[@class='%s']";
+
     private List<Game> discountGames = new ArrayList<>();
     private final String ALL_DISCOUNTS_STRING_LOCATORS = "(//div[@id='TopSellersRows']//div[@class='discount_block tab_item_discount']/..)";
-    private final String DISCOUNT_PCT_STRING_LOCATOR = "//div[@class='discount_pct']";
-    private final String DISCOUNT_ORIGINAL_PRICE_STRING_LOCATOR = "//div[@class='discount_original_price']";
-    private final String DISCOUNT_FINAL_PRICE_STRING_LOCATOR = "//div[@class='discount_final_price']";
+    private final String DISCOUNT_PCT_STRING_LOCATOR = String.format(DISCOUNT_STRING_LOCATOR,"discount_pct");
+    private final String DISCOUNT_ORIGINAL_PRICE_STRING_LOCATOR = String.format(DISCOUNT_STRING_LOCATOR,"discount_original_price");
+    private final String DISCOUNT_FINAL_PRICE_STRING_LOCATOR = String.format(DISCOUNT_STRING_LOCATOR,"discount_final_price");
     private final String DIGIT_PATTERN = "([\\d\\.]+)";
 
     public TabRows() {

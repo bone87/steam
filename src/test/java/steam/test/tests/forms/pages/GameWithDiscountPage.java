@@ -1,4 +1,4 @@
-package steam.test.tests.forms;
+package steam.test.tests.forms.pages;
 
 import org.openqa.selenium.By;
 import steam.test.tests.models.Game;
@@ -7,13 +7,14 @@ import webdriver.elements.Label;
 
 public class GameWithDiscountPage extends BasePage
 {
-    private final String STRING_LOCATOR = "//div[@id='game_area_purchase']//div[@class='%s']";
+    private final static String STRING_LOCATOR = "//div[@id='game_area_purchase']//div[@class='%s']";
     private final String DIGIT_PATTERN = "([\\d\\.]+)";
     private Label labelDiscountPct = new Label(By.xpath(String.format(STRING_LOCATOR, "discount_pct")), "discount pct");
     private Label labelDiscountOriginalPrice = new Label(By.xpath(String.format(STRING_LOCATOR, "discount_original_price")), "discount original price");
     private Label labelDiscountGinalPrice = new Label(By.xpath(String.format(STRING_LOCATOR, "discount_final_price")), "discount final price");
+
     public GameWithDiscountPage() {
-        super(By.xpath("//div[@id='game_area_purchase']//div[@class='discount_block game_purchase_discount']"),"page for game with discount");
+        super(By.xpath(String.format(STRING_LOCATOR, "discount_block game_purchase_discount")), "page for game with discount");
     }
 
     public Game getGameWithDiscount() {

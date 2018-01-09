@@ -1,7 +1,6 @@
 package steam.test.tests.forms;
 
 import steam.test.tests.forms.tabs.BaseTab;
-import steam.test.tests.forms.tabs.TopSellers;
 
 public class StoreTabBar {
     public BaseTab tab;
@@ -17,7 +16,7 @@ public class StoreTabBar {
                 break;
             default: throw new AssertionError("Unknown tab name" + tabName);
         }
-        tab = new TopSellers(tabId);
+        tab = new BaseTab(tabId);
         return tab;
     }
 }
