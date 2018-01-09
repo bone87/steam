@@ -135,6 +135,16 @@ final public class BrowserFactory {
         DesiredCapabilities caps =  (capabilities != null) ? capabilities : new DesiredCapabilities();
         FirefoxProfile ffProfile = new FirefoxProfile();
         ffProfile.setPreference("plugin.state.flash", (Browser.isWithoutFlash()) ? 1 : 0);
+        ffProfile.setPreference("browser.download.folderList", 2);
+        ffProfile.setPreference("browser.download.manager.showWhenStarting", false);
+        ffProfile.setPreference("browser.helperApps.alwaysAsk.force", false);
+        ffProfile.setPreference("browser.download.manager.alertOnEXEOpen", false);
+        ffProfile.setPreference("browser.download.manager.focusWhenStarting", false);
+        ffProfile.setPreference("browser.download.manager.useWindow", false);
+        ffProfile.setPreference("browser.download.manager.showAlertOnComplete", false);
+        ffProfile.setPreference("browser.download.manager.closeWhenDone", false);
+        ffProfile.setPreference("browser.helperApps.neverAsk.saveToDisk","application/octet-stream;application/x-debian-package");
+
         if (Browser.getDetectJsErrors()) {
             try {
                 JavaScriptError.addExtension(ffProfile);
