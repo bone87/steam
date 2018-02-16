@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Test Plan" verbose="1">
-	<test name="SteamTest">
+	<test name="Uper">
 		<classes>
-			<class name="steam.test.tests.SteamTest" />
+			<class name="onliner.uper.OnlinerUper" />
         </classes>
 	</test>
 </suite>
