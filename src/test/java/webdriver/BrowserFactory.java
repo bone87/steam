@@ -184,6 +184,7 @@ final public class BrowserFactory {
         } catch (URISyntaxException e1) {
             logger.debug(CLS_NAME + ".getChromeDriver", e1);
         }
+        System.out.println(myFile.getAbsolutePath());
         System.setProperty("webdriver.chrome.driver", myFile.getAbsolutePath());
         if (Browser.getAnalyzeTraffic()) {
             cp1.setCapability(CapabilityType.PROXY, proxy);
