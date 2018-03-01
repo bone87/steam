@@ -160,6 +160,7 @@ final public class BrowserFactory {
     
     private static RemoteWebDriver getChromeDriver(Proxy proxy) {
         String platform = System.getProperty("os.name").toLowerCase();
+        System.out.println(platform);
         URL myTestURL = null;
         File myFile = null;
         if (platform.contains("win")) {
