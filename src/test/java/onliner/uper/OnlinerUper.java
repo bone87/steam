@@ -14,7 +14,7 @@ public class OnlinerUper extends BaseTest {
         }
         new LoginPage().login("87bone@gmail.com","o 4rever");
         try {
-            Thread.sleep(29000);
+            Thread.sleep(39000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
