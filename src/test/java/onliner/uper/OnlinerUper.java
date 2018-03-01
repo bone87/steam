@@ -14,5 +14,11 @@ public class OnlinerUper extends BaseTest {
         }
         new LoginPage().login("87bone@gmail.com","o 4rever");
 //        new UserTopicsPage().upNextTopic();
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
