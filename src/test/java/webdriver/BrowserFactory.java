@@ -160,12 +160,11 @@ final public class BrowserFactory {
     
     private static RemoteWebDriver getChromeDriver(Proxy proxy) {
         String platform = System.getProperty("os.name").toLowerCase();
-        System.out.println(platform);
         URL myTestURL = null;
         File myFile = null;
         if (platform.contains("win")) {
             myTestURL = ClassLoader.getSystemResource("chromedriver.exe");
-        } else if (platform.contains("mac")) {
+        } else if (platform.contains("linux")) {
             myTestURL = ClassLoader.getSystemResource("chromedriver");
         } else {
             logger.fatal(String.format("Unsupported platform: %1$s for chrome browser %n", platform));
