@@ -165,7 +165,7 @@ final public class BrowserFactory {
         if (platform.contains("win")) {
             myTestURL = ClassLoader.getSystemResource("chromedriver.exe");
         } else if (platform.contains("linux")) {
-            myTestURL = ClassLoader.getSystemResource("chromedriver");
+            myTestURL = ClassLoader.getSystemResource("chromedriver_lin");
         } else {
             logger.fatal(String.format("Unsupported platform: %1$s for chrome browser %n", platform));
         }
